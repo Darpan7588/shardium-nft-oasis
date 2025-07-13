@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Menu, Search, User, Wallet, Bell } from "lucide-react";
+import { Menu, Search, User, Bell } from "lucide-react";
 import { useState } from "react";
+import { WalletConnection } from "./WalletConnection";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -64,10 +65,9 @@ const Navigation = () => {
             </Button>
 
             {/* Wallet Connection */}
-            <Button variant="outline" className="hidden sm:flex items-center gap-2 border-primary/30 hover:border-primary">
-              <Wallet className="h-4 w-4" />
-              <span className="hidden lg:inline">Connect Wallet</span>
-            </Button>
+            <div className="hidden sm:flex">
+              <WalletConnection />
+            </div>
 
             {/* Profile */}
             <Button variant="ghost" size="icon">
@@ -101,10 +101,7 @@ const Navigation = () => {
                 </a>
               ))}
               <div className="pt-4 border-t border-border/30">
-                <Button variant="outline" className="w-full justify-center gap-2 border-primary/30">
-                  <Wallet className="h-4 w-4" />
-                  Connect Wallet
-                </Button>
+                <WalletConnection />
               </div>
             </div>
           </div>

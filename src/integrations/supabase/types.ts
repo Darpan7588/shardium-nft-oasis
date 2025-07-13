@@ -14,7 +14,172 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      nfts: {
+        Row: {
+          attributes: Json | null
+          category: string | null
+          contract_address: string
+          created_at: string
+          creator_id: string | null
+          description: string | null
+          id: string
+          image_url: string
+          is_listed: boolean | null
+          metadata_uri: string | null
+          owner_id: string | null
+          price: number | null
+          title: string
+          token_id: string
+          updated_at: string
+        }
+        Insert: {
+          attributes?: Json | null
+          category?: string | null
+          contract_address: string
+          created_at?: string
+          creator_id?: string | null
+          description?: string | null
+          id?: string
+          image_url: string
+          is_listed?: boolean | null
+          metadata_uri?: string | null
+          owner_id?: string | null
+          price?: number | null
+          title: string
+          token_id: string
+          updated_at?: string
+        }
+        Update: {
+          attributes?: Json | null
+          category?: string | null
+          contract_address?: string
+          created_at?: string
+          creator_id?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string
+          is_listed?: boolean | null
+          metadata_uri?: string | null
+          owner_id?: string | null
+          price?: number | null
+          title?: string
+          token_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "nfts_creator_id_fkey"
+            columns: ["creator_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "nfts_owner_id_fkey"
+            columns: ["owner_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      transactions: {
+        Row: {
+          block_number: number | null
+          created_at: string
+          from_user_id: string | null
+          gas_fee: number | null
+          id: string
+          nft_id: string | null
+          price: number | null
+          status: string | null
+          to_user_id: string | null
+          transaction_hash: string
+          transaction_type: string
+        }
+        Insert: {
+          block_number?: number | null
+          created_at?: string
+          from_user_id?: string | null
+          gas_fee?: number | null
+          id?: string
+          nft_id?: string | null
+          price?: number | null
+          status?: string | null
+          to_user_id?: string | null
+          transaction_hash: string
+          transaction_type: string
+        }
+        Update: {
+          block_number?: number | null
+          created_at?: string
+          from_user_id?: string | null
+          gas_fee?: number | null
+          id?: string
+          nft_id?: string | null
+          price?: number | null
+          status?: string | null
+          to_user_id?: string | null
+          transaction_hash?: string
+          transaction_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "transactions_from_user_id_fkey"
+            columns: ["from_user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "transactions_nft_id_fkey"
+            columns: ["nft_id"]
+            isOneToOne: false
+            referencedRelation: "nfts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "transactions_to_user_id_fkey"
+            columns: ["to_user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      users: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          email: string | null
+          id: string
+          updated_at: string
+          username: string | null
+          wallet_address: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          updated_at?: string
+          username?: string | null
+          wallet_address: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          updated_at?: string
+          username?: string | null
+          wallet_address?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
