@@ -25,10 +25,10 @@ declare global {
 }
 
 const SHARDEUM_TESTNET_CONFIG = {
-  chainId: '0x1F92', // 8082 in hex
-  chainName: 'Shardeum Sphinx Testnet',
+  chainId: '0x1F93', // 8082 in hex
+  chainName: 'Shardeum Testnet',
   nativeCurrency: {
-    name: 'Shardeum',
+    name: 'SHM',
     symbol: 'SHM',
     decimals: 18,
   },
